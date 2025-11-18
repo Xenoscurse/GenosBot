@@ -24,7 +24,7 @@
         }
         
         .container {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
             padding: 0 20px;
             width: 100%;
@@ -395,7 +395,7 @@
                         </div>
                         <div class="card-value" id="bot-status">Online</div>
                         <div class="status-indicator">
-                            <div class="status-dot online"></div>
+                            <div class="status-dot online" id="status-dot"></div>
                             <span id="status-text">All systems operational</span>
                         </div>
                     </div>
@@ -430,16 +430,15 @@
             <section class="update-info">
                 <h3 class="update-title">Latest Updates</h3>
                 <div class="update-status">
-                    <div class="update-dot updated"></div>
+                    <div class="update-dot updated" id="update-dot"></div>
                     <span id="update-status-text">System Updated</span>
                 </div>
                 <p class="update-details" id="update-details">
                     Last updated: January 2024
                 </p>
                 
-                <!-- EMPTY CHANGELOG - READY FOR YOU TO ADD UPDATES -->
-                <div class="changelog">
-                    <!-- ADD YOUR UPDATES HERE -->
+                <div class="changelog" id="changelog-container">
+                    <!-- Changelog items will be inserted here by JavaScript -->
                 </div>
             </section>
         </main>
@@ -450,6 +449,98 @@
     </div>
 
     <script>
+        // =============================================
+        // CONFIGURATION - UPDATE THESE VALUES AS NEEDED
+        // =============================================
+        
+        // Bot Status Configuration
+        const botConfig = {
+            status: "online", // Options: "online", "offline", "maintenance"
+            statusText: "All systems operational",
+            uptime: "99.8%",
+            uptimeText: "Last 30 days",
+            lastUpdated: "January 2024"
+        };
+        
+        // Changelog Configuration - Add your updates here
+        const changelogData = [
+            {
+                date: "January 15, 2024",
+                message: "Added new moderation commands and improved performance"
+            },
+            {
+                date: "December 20, 2023",
+                message: "Fixed bug with music playback and added playlist support"
+            },
+            {
+                date: "November 5, 2023",
+                message: "Introduced new economy system with leaderboards"
+            },
+            {
+                date: "October 12, 2023",
+                message: "Initial release with basic moderation and utility commands"
+            }
+        ];
+        
+        // =============================================
+        // END OF CONFIGURATION - DO NOT EDIT BELOW
+        // =============================================
+        
+        // Apply bot status configuration
+        function updateBotStatus() {
+            const statusElement = document.getElementById('bot-status');
+            const statusDot = document.getElementById('status-dot');
+            const statusText = document.getElementById('status-text');
+            const uptimeElement = document.getElementById('uptime');
+            const uptimeTextElement = document.getElementById('uptime-text');
+            const updateDetails = document.getElementById('update-details');
+            const updateDot = document.getElementById('update-dot');
+            const updateStatusText = document.getElementById('update-status-text');
+            
+            // Set status values
+            statusElement.textContent = botConfig.status.charAt(0).toUpperCase() + botConfig.status.slice(1);
+            statusText.textContent = botConfig.statusText;
+            uptimeElement.textContent = botConfig.uptime;
+            uptimeTextElement.textContent = botConfig.uptimeText;
+            updateDetails.textContent = `Last updated: ${botConfig.lastUpdated}`;
+            
+            // Set status dot color based on status
+            statusDot.className = 'status-dot';
+            updateDot.className = 'update-dot';
+            
+            if (botConfig.status === "online") {
+                statusDot.classList.add('online');
+                updateDot.classList.add('updated');
+                updateStatusText.textContent = "System Updated";
+            } else if (botConfig.status === "offline") {
+                statusDot.classList.add('offline');
+                updateDot.classList.add('pending');
+                updateStatusText.textContent = "Update Pending";
+            } else if (botConfig.status === "maintenance") {
+                statusDot.classList.add('maintenance');
+                updateDot.classList.add('pending');
+                updateStatusText.textContent = "Update Pending";
+            }
+        }
+        
+        // Populate changelog
+        function populateChangelog() {
+            const changelogContainer = document.getElementById('changelog-container');
+            changelogContainer.innerHTML = '';
+            
+            changelogData.forEach(item => {
+                const changelogItem = document.createElement('div');
+                changelogItem.className = 'changelog-item';
+                
+                changelogItem.innerHTML = `
+                    <div class="changelog-date">${item.date}</div>
+                    <div class="changelog-message">${item.message}</div>
+                `;
+                
+                changelogContainer.appendChild(changelogItem);
+            });
+        }
+        
         // Update the refresh time
         function updateRefreshTime() {
             const now = new Date();
@@ -463,9 +554,15 @@
             document.getElementById('refresh-time').textContent = timeString;
         }
         
+        // Initialize the dashboard
+        function initDashboard() {
+            updateBotStatus();
+            populateChangelog();
+            updateRefreshTime();
+        }
+        
         // Update the refresh time every second
         setInterval(updateRefreshTime, 1000);
-        updateRefreshTime();
         
         // Click effect for the entire interface
         document.body.addEventListener('click', function() {
@@ -474,6 +571,9 @@
                 document.body.classList.remove('click-effect');
             }, 300);
         });
+        
+        // Initialize the dashboard when the page loads
+        window.addEventListener('DOMContentLoaded', initDashboard);
     </script>
 </body>
 </html>
