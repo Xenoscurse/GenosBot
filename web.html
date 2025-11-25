@@ -21,6 +21,13 @@
             flex-direction: column;
             overflow-x: hidden;
             cursor: pointer;
+            opacity: 0;
+            animation: fadeInBody 1.2s ease-out forwards;
+        }
+        
+        @keyframes fadeInBody {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
         }
         
         .container {
@@ -49,6 +56,8 @@
             align-items: center;
             margin-bottom: 20px;
             gap: 20px;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 0.3s forwards;
         }
         
         .profile-pic {
@@ -75,6 +84,8 @@
             color: transparent;
             letter-spacing: 1px;
             text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 0.5s forwards;
         }
         
         main {
@@ -96,6 +107,8 @@
             display: inline-block;
             left: 50%;
             transform: translateX(-50%);
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 0.7s forwards;
         }
         
         .section-title::after {
@@ -124,6 +137,12 @@
             transition: transform 0.3s, box-shadow 0.3s;
             backdrop-filter: blur(10px);
             text-align: center;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 0.9s forwards;
+        }
+        
+        .status-card:nth-child(2) {
+            animation-delay: 1.1s;
         }
         
         .status-card:hover {
@@ -197,6 +216,8 @@
             border: 1px solid #222;
             text-align: center;
             backdrop-filter: blur(10px);
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 1.3s forwards;
         }
         
         .invite-title {
@@ -227,11 +248,14 @@
             border: none;
             cursor: pointer;
             box-shadow: 0 4px 10px rgba(88, 101, 242, 0.3);
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 1.5s forwards;
         }
         
         .invite-btn.support {
             background: linear-gradient(135deg, #57F287, #43B581);
             box-shadow: 0 4px 10px rgba(87, 242, 135, 0.3);
+            animation-delay: 1.7s;
         }
         
         .invite-btn:hover {
@@ -251,6 +275,8 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
             border: 1px solid #222;
             backdrop-filter: blur(10px);
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 1.9s forwards;
         }
         
         .update-title {
@@ -303,6 +329,8 @@
             background: #1a1a1a;
             border-radius: 6px;
             border-left: 2px solid #333;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out forwards;
         }
         
         .changelog-date {
@@ -322,6 +350,8 @@
             text-align: center;
             color: #666;
             font-size: 14px;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 2.1s forwards;
         }
         
         .credit {
@@ -356,6 +386,18 @@
         @keyframes loading {
             0% { left: -100%; }
             100% { left: 100%; }
+        }
+        
+        /* Fade-in animation */
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         
         @media (max-width: 768px) {
@@ -583,12 +625,12 @@
             }
         }
         
-        // Populate changelog
+        // Populate changelog with staggered animation
         function populateChangelog() {
             const changelogContainer = document.getElementById('changelog-container');
             changelogContainer.innerHTML = '';
             
-            changelogData.forEach(item => {
+            changelogData.forEach((item, index) => {
                 const changelogItem = document.createElement('div');
                 changelogItem.className = 'changelog-item';
                 
@@ -596,6 +638,9 @@
                     <div class="changelog-date">${item.date}</div>
                     <div class="changelog-message">${item.message}</div>
                 `;
+                
+                // Add staggered animation delay for each changelog item
+                changelogItem.style.animationDelay = `${2.3 + (index * 0.1)}s`;
                 
                 changelogContainer.appendChild(changelogItem);
             });
