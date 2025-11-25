@@ -14,8 +14,8 @@
         }
         
         body {
-            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
-            color: #ffffff;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #2a2a2a 100%);
+            color: #f0f0f0;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -39,13 +39,13 @@
         }
         
         body.click-effect .container {
-            box-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
             border-radius: 10px;
         }
         
         header {
             padding: 40px 0;
-            border-bottom: 1px solid #222;
+            border-bottom: 1px solid #333;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -65,8 +65,8 @@
             height: 120px;
             border-radius: 50%;
             object-fit: cover;
-            border: 3px solid #333;
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+            border: 3px solid #444;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
             transition: transform 0.3s ease;
         }
         
@@ -78,7 +78,7 @@
             font-size: 32px;
             font-weight: 700;
             text-align: center;
-            background: linear-gradient(90deg, #ffffff, #aaaaaa, #ffffff);
+            background: linear-gradient(90deg, #ffffff, #cccccc, #ffffff);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
@@ -118,7 +118,7 @@
             transform: translateX(-50%);
             width: 200px;
             height: 2px;
-            background: linear-gradient(90deg, transparent, #ffffff, transparent);
+            background: linear-gradient(90deg, transparent, #cccccc, transparent);
         }
         
         .status-cards {
@@ -129,11 +129,11 @@
         }
         
         .status-card {
-            background: rgba(17, 17, 17, 0.8);
+            background: rgba(30, 30, 30, 0.9);
             border-radius: 12px;
             padding: 30px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            border: 1px solid #222;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+            border: 1px solid #444;
             transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
             backdrop-filter: blur(10px);
             text-align: center;
@@ -147,13 +147,13 @@
         
         .status-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
-            border-color: #444;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            border-color: #666;
         }
         
         .card-title {
             font-size: 18px;
-            color: #aaa;
+            color: #bbb;
             margin-bottom: 15px;
             display: flex;
             align-items: center;
@@ -169,6 +169,7 @@
             font-size: 42px;
             font-weight: 700;
             margin-bottom: 15px;
+            color: #ffffff;
         }
         
         .status-indicator {
@@ -208,12 +209,12 @@
         }
         
         .invite-section {
-            background: rgba(17, 17, 17, 0.8);
+            background: rgba(30, 30, 30, 0.9);
             border-radius: 12px;
             padding: 30px;
             margin: 40px 0;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            border: 1px solid #222;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+            border: 1px solid #444;
             text-align: center;
             backdrop-filter: blur(10px);
             opacity: 0;
@@ -223,7 +224,7 @@
         
         .invite-section:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
         }
         
         .invite-title {
@@ -244,7 +245,7 @@
             align-items: center;
             gap: 10px;
             padding: 15px 25px;
-            background: linear-gradient(135deg, #5865F2, #4752C4);
+            background: linear-gradient(135deg, #333333, #555555);
             color: white;
             text-decoration: none;
             border-radius: 8px;
@@ -253,20 +254,25 @@
             transition: all 0.3s ease;
             border: none;
             cursor: pointer;
-            box-shadow: 0 4px 10px rgba(88, 101, 242, 0.3);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
             opacity: 0;
             animation: fadeInUp 1s ease-out 1.5s forwards;
         }
         
         .invite-btn.support {
-            background: linear-gradient(135deg, #57F287, #43B581);
-            box-shadow: 0 4px 10px rgba(87, 242, 135, 0.3);
+            background: linear-gradient(135deg, #555555, #777777);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
             animation-delay: 1.7s;
         }
         
         .invite-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+            background: linear-gradient(135deg, #444444, #666666);
+        }
+        
+        .invite-btn.support:hover {
+            background: linear-gradient(135deg, #666666, #888888);
         }
         
         .invite-btn i {
@@ -274,12 +280,12 @@
         }
         
         .update-info {
-            background: rgba(17, 17, 17, 0.8);
+            background: rgba(30, 30, 30, 0.9);
             border-radius: 12px;
             padding: 25px;
             margin-top: 40px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            border: 1px solid #222;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+            border: 1px solid #444;
             backdrop-filter: blur(10px);
             opacity: 0;
             animation: fadeInUp 1s ease-out 1.9s forwards;
@@ -288,7 +294,7 @@
         
         .update-info:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
         }
         
         .update-title {
@@ -320,7 +326,7 @@
         }
         
         .update-details {
-            color: #aaa;
+            color: #bbb;
             line-height: 1.6;
             margin-bottom: 15px;
         }
@@ -328,9 +334,9 @@
         .changelog {
             margin-top: 20px;
             padding: 15px;
-            background: #151515;
+            background: #252525;
             border-radius: 8px;
-            border-left: 3px solid #5865F2;
+            border-left: 3px solid #666;
             max-height: 400px;
             overflow-y: auto;
         }
@@ -338,9 +344,9 @@
         .changelog-item {
             padding: 10px;
             margin-bottom: 10px;
-            background: #1a1a1a;
+            background: #2a2a2a;
             border-radius: 6px;
-            border-left: 2px solid #333;
+            border-left: 2px solid #444;
             opacity: 0;
             animation: fadeInUp 0.8s ease-out forwards;
             transition: transform 0.2s, background-color 0.2s;
@@ -348,25 +354,25 @@
         
         .changelog-item:hover {
             transform: translateX(5px);
-            background-color: #222;
+            background-color: #333;
         }
         
         .changelog-date {
-            color: #777;
+            color: #999;
             font-size: 14px;
             margin-bottom: 5px;
         }
         
         .changelog-message {
-            color: #aaa;
+            color: #ccc;
             line-height: 1.5;
         }
         
         footer {
             padding: 30px 0;
-            border-top: 1px solid #222;
+            border-top: 1px solid #333;
             text-align: center;
-            color: #666;
+            color: #888;
             font-size: 14px;
             opacity: 0;
             animation: fadeInUp 1s ease-out 2.1s forwards;
@@ -375,13 +381,13 @@
         .credit {
             margin-top: 10px;
             font-size: 14px;
-            color: #555;
+            color: #777;
         }
         
         .copyright {
             margin-top: 5px;
             font-size: 12px;
-            color: #444;
+            color: #666;
         }
         
         .loading {
@@ -453,7 +459,7 @@
     <div class="container">
         <header>
             <div class="profile-container">
-                <img src="https://cdn.discordapp.com/avatars/1282229251726114856/a_969e0dd68a7438c112c40ae92dab1b4b.gif?size=1024" alt="Genos Profile" class="profile-pic">
+                <img src="https://cdn.discordapp.com/avatars/1282229251726114856/a_8a31cab39d6986cca0aecd5e2b5451e7.gif?size=1024" alt="Genos Profile" class="profile-pic">
                 <h1 class="logo">Genos Bot</h1>
             </div>
         </header>
