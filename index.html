@@ -612,7 +612,7 @@
             </section>
             
             <!-- Learn More Section -->
-            <section class="update-info" id="learn-more">
+            <section class="update-info" id="learn-more" style="display: none;">
                 <h3 class="update-title">About Genos</h3>
                 <div class="update-details">
                     <p>Genos is a powerful multi-purpose Discord bot designed to enhance your server experience with premium features.</p>
@@ -799,9 +799,6 @@
                 changelog: document.getElementById('changelog'),
                 'learn-more': document.getElementById('learn-more')
             };
-            
-            // Initially hide the learn more section
-            sections['learn-more'].style.display = 'none';
             
             navButtons.forEach(button => {
                 button.addEventListener('click', (e) => {
